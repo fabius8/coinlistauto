@@ -15,7 +15,7 @@ print(pyautogui.size())
 # 输入网站
 while True:
     location = pyautogui.locateOnScreen(
-        '/Users/fabius8/Documents/fresh2.png', 
+        'fresh.png', 
         confidence=0.9, 
         grayscale=True)
     if location:
