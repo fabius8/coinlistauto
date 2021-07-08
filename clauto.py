@@ -7,6 +7,8 @@ import time
 from PIL import Image, ImageGrab
 from pytesseract import Output
 import imagehash
+from fuzzy_match import match
+from fuzzy_match import algorithims
 
 secretjson = json.load(open('secret.json'))
 Email = ""
@@ -18,8 +20,6 @@ imgDiff = 5
 # 必要素材
 freshPic = 'detectpic/fresh.png'
 loginPic = 'detectpic/login.png'
-
-print(pyautogui.size()) 
 
 def IsForward(oldImg, newImg):
     oldhash = imagehash.average_hash(oldImg)
@@ -46,8 +46,8 @@ while True:
         oldImg.save("old.png")
         pyautogui.press('enter')
         pyautogui.press('enter')
-        time.sleep(5)
-        pyautogui.moveTo(point.x/2, point.y/2 *3)
+        time.sleep(10)
+        pyautogui.moveTo(point.x, point.y *4)
         pyautogui.click()
         break
     else:
@@ -69,16 +69,16 @@ while True:
     Img = ImageGrab.grab()
     Img = Img.convert('L')
 
-    # 设定阈值
-    threshold = 200
-    table = []
-    for i in range(256):
-        if i < threshold:
-            table.append(1)
-        else:
-            table.append(0)
-    # 图片二值化
-    Img = Img.point(table, '1')
+    # # 设定阈值
+    # threshold = 180
+    # table = []
+    # for i in range(256):
+    #     if i < threshold:
+    #         table.append(1)
+    #     else:
+    #         table.append(0)
+    # # 图片二值化
+    # Img = Img.point(table, '1')
     # 最后保存二值化图片
     Img.save("Email.png")
 
@@ -129,6 +129,7 @@ while True:
             print((x, y, w, h))
             pyautogui.moveTo(x/2, y/2 + h*3, 1)
             pyautogui.click(x/2, y/2 + h*3)
+            time.sleep(3)
             break
     if find == 1:
         break
@@ -167,10 +168,11 @@ while True:
             pyautogui.press("backspace")
             pyautogui.press("backspace")
             for i in secretjson:
-                if Email in i["Username"]:
+                diff = algorithims.trigram(Email, i["Username"])
+                if diff > 0.6:
                     find = 1
                     totp = pyotp.TOTP(i["Secret"])
-                    print(Email, pyotp.TOTP(i["Secret"])) 
+                    print(Email, i["Username"], totp.now())
                     pyautogui.write(totp.now())
                     pyautogui.click(x/2 + w/2, y/2 + h/2 * 10)
                     break
@@ -178,4 +180,5 @@ while True:
     if find == 1:
         break
     print("Not find authentication")
+    time.sleep(2)
 
