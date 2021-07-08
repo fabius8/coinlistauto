@@ -48,7 +48,7 @@ def autoLogin():
             oldImg.save("old.png")
             pyautogui.press('enter')
             pyautogui.press('enter')
-            time.sleep(10)
+            time.sleep(4)
             pyautogui.moveTo(point.x, point.y *4)
             pyautogui.click()
             break
@@ -71,16 +71,16 @@ def autoLogin():
         Img = ImageGrab.grab()
         Img = Img.convert('L')
 
-        # # 设定阈值
-        # threshold = 180
-        # table = []
-        # for i in range(256):
-        #     if i < threshold:
-        #         table.append(1)
-        #     else:
-        #         table.append(0)
-        # # 图片二值化
-        # Img = Img.point(table, '1')
+        # 设定阈值
+        threshold = 180
+        table = []
+        for i in range(256):
+            if i < threshold:
+                table.append(1)
+            else:
+                table.append(0)
+        # 图片二值化
+        Img = Img.point(table, '1')
         # 最后保存二值化图片
         Img.save("Email.png")
 
@@ -100,7 +100,7 @@ def autoLogin():
         if find == 1:
             break
         print("Not find Email")
-        time.sleep(3)
+        time.sleep(1)
 
     # 点击邮箱下面LOGIN按钮
     while True:
@@ -162,8 +162,8 @@ def autoLogin():
                 print(d['text'][i])
                 print("Find authentication")
                 (x, y, w, h) = (d['left'][i], d['top'][i], d['width'][i], d['height'][i])
-                pyautogui.moveTo(x/2 + w/2, y/2 + h/2 * 4)
-                pyautogui.click(x/2 + w/2, y/2 + h/2 * 4)
+                pyautogui.moveTo(x/2 + w, y/2 + h/2 * 4)
+                pyautogui.click(x/2 + w, y/2 + h/2 * 4)
                 pyautogui.press("backspace")
                 pyautogui.press("backspace")
                 pyautogui.press("backspace")
@@ -182,12 +182,12 @@ def autoLogin():
                         print(Email, i["Username"], totp.now())
                         pyautogui.write(totp.now())
                         break
-                pyautogui.click(x/2 + w/2, y/2 + h/2 * 10)   
+                pyautogui.click(x/2 + w, y/2 + h/2 * 10)   
                 break
         if find == 1:
             break
         print("Not find authentication")
-        time.sleep(2)
+        time.sleep(1)
 
 if __name__ == "__main__":
     autoLogin()
