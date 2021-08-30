@@ -24,6 +24,10 @@ saleOption1 = 'coinlist.co/immutable-x-option-1/new'
 saleOption2 = 'coinlist.co/immutable-x-option-2/new'
 continuewithPic = 'detectpic/continuewith.png'
 continuePic = 'detectpic/continue.png'
+japanPic = 'detectpic/japan.png'
+selectcountryPic = 'detectpic/selectcountry.png'
+manycountryPic = 'detectpic/manycountry.png'
+confirmresidencePic = 'detectpic/confirmresidence.png'
 
 q1 = 'detectpic/imxquiz/q1.png'
 q2 = 'detectpic/imxquiz/q2.png'
@@ -204,6 +208,21 @@ def autoLogin():
         print("Not find authentication")
         time.sleep(1)
 
+def locatePic(pic):
+    while True:
+        location = pyautogui.locateOnScreen(pic, confidence=0.9, grayscale=True)
+        if location:
+            info = "Find " + pic
+            print(info)
+            point = pyautogui.center(location)
+            pyautogui.moveTo(point.x/2, point.y/2)
+            time.sleep(1)
+            break
+        else:
+            info = "Not Find " + pic
+            print(info)
+            time.sleep(2)
+
 def register(saleOption):
     time.sleep(2)
     while True:
@@ -240,6 +259,31 @@ def register(saleOption):
         else:
             print("Not find continuewith xxx")
             time.sleep(2)
+
+    locatePic(selectcountryPic)
+    pyautogui.click()
+    locatePic(manycountryPic)
+    pyautogui.press("pagedown")
+    pyautogui.press("pagedown")
+    pyautogui.press("pagedown")
+    pyautogui.press("pagedown")
+    pyautogui.press("pagedown")
+    pyautogui.press("pagedown")
+    locatePic(japanPic)
+    pyautogui.click()
+    locatePic(confirmresidencePic)
+    pyautogui.click()
+    # again check japan
+    while True:
+        location = pyautogui.locateOnScreen(japanPic, confidence=0.9, grayscale=True)
+        if location:
+            print("japan ok")
+            break
+        else:
+            print("japan fail")
+            time.sleep(1)
+    locatePic(continuePic)
+    pyautogui.click()
 
 def quiz(qx):
     while True:
@@ -281,6 +325,8 @@ def doQuiz():
         else:
             print("Not find continue")
             time.sleep(2)
+
+
 
 
 if __name__ == "__main__":
