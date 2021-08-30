@@ -20,6 +20,20 @@ imgDiff = 5
 # 必要素材
 freshPic = 'detectpic/fresh.png'
 #loginPic = 'detectpic/login.png'
+saleOption1 = 'coinlist.co/immutable-x-option-1/new'
+saleOption2 = 'coinlist.co/immutable-x-option-2/new'
+continuewithPic = 'detectpic/continuewith.png'
+continuePic = 'detectpic/continue.png'
+
+q1 = 'detectpic/imxquiz/q1.png'
+q2 = 'detectpic/imxquiz/q2.png'
+q3 = 'detectpic/imxquiz/q3.png'
+q4 = 'detectpic/imxquiz/q4.png'
+q5 = 'detectpic/imxquiz/q5.png'
+q6 = 'detectpic/imxquiz/q6.png'
+q7 = 'detectpic/imxquiz/q7.png'
+q8 = 'detectpic/imxquiz/q8.png'
+q9 = 'detectpic/imxquiz/q9.png'
 
 def IsForward(oldImg, newImg):
     oldhash = imagehash.average_hash(oldImg)
@@ -190,5 +204,88 @@ def autoLogin():
         print("Not find authentication")
         time.sleep(1)
 
+def register(saleOption):
+    time.sleep(2)
+    while True:
+        location = pyautogui.locateOnScreen(freshPic, confidence=0.9, grayscale=True)
+        if location:
+            print(location)
+            print("Find fresh, goto sale page")
+            point = pyautogui.center(location)
+            #pyautogui.moveTo(point.x/2 *2, point.y/2)
+            pyautogui.click(point.x/2 *2, point.y/2)
+            pyautogui.press('delete')
+            oldImg = ImageGrab.grab()
+            pyautogui.write(saleOption, interval=0.01)
+            oldImg.save("old.png")
+            pyautogui.press('enter')
+            pyautogui.press('enter')
+            time.sleep(4)
+            break
+        else:
+            print("Not find fresh icon")
+            time.sleep(2)
+
+    while True:
+        location = pyautogui.locateOnScreen(continuewithPic, confidence=0.9, grayscale=True)
+        if location:
+            print(location)
+            print("Find continuewith xxx")
+            point = pyautogui.center(location)
+            #pyautogui.moveTo(point.x/2 *2, point.y/2)
+            pyautogui.click(point.x/2, point.y/2)
+            pyautogui.press('enter')
+            time.sleep(4)
+            break
+        else:
+            print("Not find continuewith xxx")
+            time.sleep(2)
+
+def quiz(qx):
+    while True:
+        location = pyautogui.locateOnScreen(qx, confidence=0.98, grayscale=True)
+        if location:
+            info = "Find " + qx
+            print(info)
+            point = pyautogui.center(location)
+            pyautogui.moveTo(point.x/2, point.y/2)
+            pyautogui.click()
+            time.sleep(1)
+            break
+        else:
+            info = "Not Find " + qx
+            print(info)
+            time.sleep(2)
+
+def doQuiz():
+    quiz(q1)
+    quiz(q2)
+    pyautogui.press("pagedown")
+    quiz(q3)
+    quiz(q4)
+    quiz(q5)
+    quiz(q6)
+    pyautogui.press("pagedown")
+    quiz(q7)
+    quiz(q8)
+    quiz(q9)
+    while True:
+        location = pyautogui.locateOnScreen(continuePic, confidence=0.9, grayscale=True)
+        if location:
+            print(location)
+            print("Find continue")
+            point = pyautogui.center(location)
+            #pyautogui.moveTo(point.x/2 *2, point.y/2)
+            pyautogui.click(point.x/2, point.y/2)
+            break
+        else:
+            print("Not find continue")
+            time.sleep(2)
+
+
 if __name__ == "__main__":
     autoLogin()
+    register(saleOption1)
+    doQuiz()
+    register(saleOption2)
+    doQuiz()
