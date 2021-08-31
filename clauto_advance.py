@@ -28,6 +28,8 @@ japanPic = 'detectpic/japan.png'
 selectcountryPic = 'detectpic/selectcountry.png'
 manycountryPic = 'detectpic/manycountry.png'
 confirmresidencePic = 'detectpic/confirmresidence.png'
+registration_completePic = 'detectpic/registration_complete.png'
+dashboardPic = 'detectpic/dashboard.png'
 
 q1 = 'detectpic/imxquiz/q1.png'
 q2 = 'detectpic/imxquiz/q2.png'
@@ -50,6 +52,20 @@ def IsForward(oldImg, newImg):
     else:
         return False
 
+def locatePic(pic):
+    while True:
+        location = pyautogui.locateOnScreen(pic, confidence=0.9, grayscale=True)
+        if location:
+            info = "Find " + pic
+            print(info)
+            point = pyautogui.center(location)
+            pyautogui.moveTo(point.x/2, point.y/2)
+            time.sleep(0.2)
+            break
+        else:
+            info = "Not Find " + pic
+            print(info)
+            time.sleep(0.2)
 
 def autoLogin():
     # 输入网站
@@ -72,7 +88,7 @@ def autoLogin():
             break
         else:
             print("Not find fresh icon")
-            time.sleep(2)
+            time.sleep(1)
 
     while True:
         # 对比图片页面是否前进
@@ -207,24 +223,11 @@ def autoLogin():
             break
         print("Not find authentication")
         time.sleep(1)
+    locatePic(dashboardPic)
 
-def locatePic(pic):
-    while True:
-        location = pyautogui.locateOnScreen(pic, confidence=0.9, grayscale=True)
-        if location:
-            info = "Find " + pic
-            print(info)
-            point = pyautogui.center(location)
-            pyautogui.moveTo(point.x/2, point.y/2)
-            time.sleep(1)
-            break
-        else:
-            info = "Not Find " + pic
-            print(info)
-            time.sleep(2)
+
 
 def register(saleOption):
-    time.sleep(2)
     while True:
         location = pyautogui.locateOnScreen(freshPic, confidence=0.9, grayscale=True)
         if location:
@@ -239,7 +242,7 @@ def register(saleOption):
             oldImg.save("old.png")
             pyautogui.press('enter')
             pyautogui.press('enter')
-            time.sleep(4)
+            time.sleep(1)
             break
         else:
             print("Not find fresh icon")
@@ -254,7 +257,7 @@ def register(saleOption):
             #pyautogui.moveTo(point.x/2 *2, point.y/2)
             pyautogui.click(point.x/2, point.y/2)
             pyautogui.press('enter')
-            time.sleep(4)
+            time.sleep(1)
             break
         else:
             print("Not find continuewith xxx")
@@ -294,12 +297,12 @@ def quiz(qx):
             point = pyautogui.center(location)
             pyautogui.moveTo(point.x/2, point.y/2)
             pyautogui.click()
-            time.sleep(1)
+            time.sleep(0.1)
             break
         else:
             info = "Not Find " + qx
             print(info)
-            time.sleep(2)
+            time.sleep(0.2)
 
 def doQuiz():
     quiz(q1)
@@ -313,25 +316,17 @@ def doQuiz():
     quiz(q7)
     quiz(q8)
     quiz(q9)
-    while True:
-        location = pyautogui.locateOnScreen(continuePic, confidence=0.9, grayscale=True)
-        if location:
-            print(location)
-            print("Find continue")
-            point = pyautogui.center(location)
-            #pyautogui.moveTo(point.x/2 *2, point.y/2)
-            pyautogui.click(point.x/2, point.y/2)
-            break
-        else:
-            print("Not find continue")
-            time.sleep(2)
+    locatePic(continuePic)
+    pyautogui.click()
+    locatePic(registration_completePic)
 
 
 
 
 if __name__ == "__main__":
     autoLogin()
-    register(saleOption1)
-    doQuiz()
+    #register(saleOption1)
+    #doQuiz()
     register(saleOption2)
     doQuiz()
+    
