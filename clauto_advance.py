@@ -10,6 +10,8 @@ import imagehash
 from fuzzy_match import match
 from fuzzy_match import algorithims
 
+investName = "braintrust"
+
 secretjson = json.load(open('secret.json'))
 Email = ""
 
@@ -19,9 +21,8 @@ newImg = None
 imgDiff = 5
 # 必要素材
 freshPic = 'detectpic/fresh.png'
-#loginPic = 'detectpic/login.png'
-saleOption1 = 'coinlist.co/immutable-x-option-1/new'
-saleOption2 = 'coinlist.co/immutable-x-option-2/new'
+saleOption1 = 'coinlist.co/' + investName + '-option-1/new'
+saleOption2 = 'coinlist.co/' + investName + '-option-2/new'
 continuewithPic = 'detectpic/continuewith.png'
 continuePic = 'detectpic/continue.png'
 japanPic = 'detectpic/japan.png'
@@ -30,27 +31,19 @@ manycountryPic = 'detectpic/manycountry.png'
 confirmresidencePic = 'detectpic/confirmresidence.png'
 registration_completePic = 'detectpic/registration_complete.png'
 dashboardPic = 'detectpic/dashboard.png'
+loginpagePic = 'detectpic/loginpage.png'
+loginPic = 'detectpic/login.png'
 
-q1 = 'detectpic/imxquiz/q1.png'
-q2 = 'detectpic/imxquiz/q2.png'
-q3 = 'detectpic/imxquiz/q3.png'
-q4 = 'detectpic/imxquiz/q4.png'
-q5 = 'detectpic/imxquiz/q5.png'
-q6 = 'detectpic/imxquiz/q6.png'
-q7 = 'detectpic/imxquiz/q7.png'
-q8 = 'detectpic/imxquiz/q8.png'
-q9 = 'detectpic/imxquiz/q9.png'
+q1 = 'detectpic/' + investName + 'quiz/q1.png'
+q2 = 'detectpic/' + investName + 'quiz/q2.png'
+q3 = 'detectpic/' + investName + 'quiz/q3.png'
+q4 = 'detectpic/' + investName + 'quiz/q4.png'
+q5 = 'detectpic/' + investName + 'quiz/q5.png'
+q6 = 'detectpic/' + investName + 'quiz/q6.png'
+q7 = 'detectpic/' + investName + 'quiz/q7.png'
+q8 = 'detectpic/' + investName + 'quiz/q8.png'
+q9 = 'detectpic/' + investName + 'quiz/q9.png'
 
-def IsForward(oldImg, newImg):
-    oldhash = imagehash.average_hash(oldImg)
-    newhash = imagehash.average_hash(newImg)
-    print("oldhash:", oldhash)
-    print("newhash:", newhash)
-    print("Image Diff:", abs(newhash - oldhash))
-    if abs(newhash - oldhash) > imgDiff:
-        return True
-    else:
-        return False
 
 def locatePic(pic):
     while True:
@@ -77,9 +70,7 @@ def autoLogin():
             point = pyautogui.center(location)
             #pyautogui.moveTo(point.x/2 *2, point.y/2)
             pyautogui.click(point.x/2 *2, point.y/2)
-            oldImg = ImageGrab.grab()
             pyautogui.write('coinlist.co/login', interval=0.01)
-            oldImg.save("old.png")
             pyautogui.press('enter')
             pyautogui.press('enter')
             time.sleep(4)
@@ -90,14 +81,7 @@ def autoLogin():
             print("Not find fresh icon")
             time.sleep(1)
 
-    while True:
-        # 对比图片页面是否前进
-        newImg = ImageGrab.grab()
-        newImg.save("new.png")
-        if IsForward(oldImg, newImg) is False:
-            time.sleep(1)
-        else:
-            break
+    locatePic(loginpagePic)
 
     # 获取邮箱
     while True:
@@ -137,41 +121,9 @@ def autoLogin():
         print("Not find Email")
         time.sleep(1)
 
-    # 点击邮箱下面LOGIN按钮
-    while True:
-        find = 0
-        Img = ImageGrab.grab()
-        Img = Img.convert('L')
+    locatePic(loginPic)
+    pyautogui.click()
 
-        # 设定阈值
-        threshold = 230
-        table = []
-        for i in range(256):
-            if i < threshold:
-                table.append(1)
-            else:
-                table.append(0)
-        # 图片二值化
-        Img = Img.point(table, '1')
-        # 最后保存二值化图片
-        Img.save("Login.png")
-
-        d = pytesseract.image_to_data(Img, output_type=Output.DICT)
-        n_boxes = len(d['level'])
-        for i in range(n_boxes):
-            if re.search(r'Remember', str(d['text'][i])):
-                find = 1
-                print("Find Remember")
-                (x, y, w, h) = (d['left'][i], d['top'][i], d['width'][i], d['height'][i])
-                print((x, y, w, h))
-                pyautogui.moveTo(x/2, y/2 + h*3)
-                pyautogui.click(x/2, y/2 + h*3)
-                time.sleep(3)
-                break
-        if find == 1:
-            break
-        print("Not find Remember")
-        time.sleep(1)
 
     # 输入auth code
     while True:
@@ -237,16 +189,14 @@ def register(saleOption):
             #pyautogui.moveTo(point.x/2 *2, point.y/2)
             pyautogui.click(point.x/2 *2, point.y/2)
             pyautogui.press('delete')
-            oldImg = ImageGrab.grab()
             pyautogui.write(saleOption, interval=0.01)
-            oldImg.save("old.png")
             pyautogui.press('enter')
             pyautogui.press('enter')
-            time.sleep(1)
+            time.sleep(0.2)
             break
         else:
             print("Not find fresh icon")
-            time.sleep(2)
+            time.sleep(1)
 
     while True:
         location = pyautogui.locateOnScreen(continuewithPic, confidence=0.9, grayscale=True)
@@ -257,11 +207,11 @@ def register(saleOption):
             #pyautogui.moveTo(point.x/2 *2, point.y/2)
             pyautogui.click(point.x/2, point.y/2)
             pyautogui.press('enter')
-            time.sleep(1)
+            time.sleep(0.2)
             break
         else:
             print("Not find continuewith xxx")
-            time.sleep(2)
+            time.sleep(1)
 
     locatePic(selectcountryPic)
     pyautogui.click()
@@ -302,7 +252,7 @@ def quiz(qx):
         else:
             info = "Not Find " + qx
             print(info)
-            time.sleep(0.2)
+            time.sleep(1)
 
 def doQuiz():
     quiz(q1)
@@ -325,8 +275,8 @@ def doQuiz():
 
 if __name__ == "__main__":
     autoLogin()
-    #register(saleOption1)
-    #doQuiz()
+    register(saleOption1)
+    doQuiz()
     register(saleOption2)
     doQuiz()
     
