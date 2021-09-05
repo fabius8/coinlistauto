@@ -1,7 +1,7 @@
 # coinlistauto
 coinlist 自动登录器
 
-https://git-scm.com/download/win
+https://github.com/git-for-windows/git/releases/download/v2.33.0.windows.2/Git-2.33.0.2-64-bit.exe
 
 安装python和tesseract
 
