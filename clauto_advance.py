@@ -10,6 +10,7 @@ import imagehash
 from fuzzy_match import match
 from fuzzy_match import algorithims
 
+#investName = "immutable-x"
 investName = "braintrust"
 
 secretjson = json.load(open('secret.json'))
@@ -53,12 +54,12 @@ def locatePic(pic):
             print(info)
             point = pyautogui.center(location)
             pyautogui.moveTo(point.x/2, point.y/2)
-            time.sleep(0.2)
+            time.sleep(0.3)
             break
         else:
             info = "Not Find " + pic
             print(info)
-            time.sleep(0.2)
+            time.sleep(2)
 
 def autoLogin():
     # 输入网站
@@ -79,7 +80,7 @@ def autoLogin():
             break
         else:
             print("Not find fresh icon")
-            time.sleep(1)
+            time.sleep(2)
 
     locatePic(loginpagePic)
 
@@ -119,11 +120,11 @@ def autoLogin():
         if find == 1:
             break
         print("Not find Email")
-        time.sleep(1)
+        time.sleep(2)
 
     locatePic(loginPic)
     pyautogui.click()
-
+    time.sleep(3)
 
     # 输入auth code
     while True:
@@ -174,7 +175,9 @@ def autoLogin():
         if find == 1:
             break
         print("Not find authentication")
-        time.sleep(1)
+        time.sleep(2)
+    
+    time.sleep(3)
     locatePic(dashboardPic)
 
 
@@ -196,8 +199,9 @@ def register(saleOption):
             break
         else:
             print("Not find fresh icon")
-            time.sleep(1)
+            time.sleep(2)
 
+    time.sleep(3)
     while True:
         location = pyautogui.locateOnScreen(continuewithPic, confidence=0.9, grayscale=True)
         if location:
@@ -211,10 +215,12 @@ def register(saleOption):
             break
         else:
             print("Not find continuewith xxx")
-            time.sleep(1)
+            time.sleep(2)
 
+    time.sleep(3)
     locatePic(selectcountryPic)
     pyautogui.click()
+    time.sleep(1)
     locatePic(manycountryPic)
     pyautogui.press("pagedown")
     pyautogui.press("pagedown")
@@ -234,7 +240,7 @@ def register(saleOption):
             break
         else:
             print("japan fail")
-            time.sleep(1)
+            time.sleep(2)
     locatePic(continuePic)
     pyautogui.click()
 
@@ -247,27 +253,31 @@ def quiz(qx):
             point = pyautogui.center(location)
             pyautogui.moveTo(point.x/2, point.y/2)
             pyautogui.click()
-            time.sleep(0.1)
+            time.sleep(0.4)
             break
         else:
             info = "Not Find " + qx
             print(info)
-            time.sleep(1)
+            time.sleep(2)
 
 def doQuiz():
+    time.sleep(3)
     quiz(q1)
     quiz(q2)
     pyautogui.press("pagedown")
+    time.sleep(1)
     quiz(q3)
     quiz(q4)
     quiz(q5)
     quiz(q6)
     pyautogui.press("pagedown")
+    time.sleep(1)
     quiz(q7)
     quiz(q8)
     quiz(q9)
     locatePic(continuePic)
     pyautogui.click()
+    time.sleep(2)
     locatePic(registration_completePic)
 
 
