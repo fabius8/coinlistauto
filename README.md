@@ -12,6 +12,8 @@ https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w64-setup-v5.0.0-alpha.
 安装完，添加系统环境变量。
 `C:\Program Files\Tesseract-OCR`
 
+`py -m pip install -r requirements`
+
 使用方法：
 1. OTP json文件准备好
 2. 打开chrome
