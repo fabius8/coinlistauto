@@ -9,6 +9,7 @@ from pytesseract import Output
 import imagehash
 from fuzzy_match import match
 from fuzzy_match import algorithims
+import winsound
 
 #pytesseract.pytesseract.tesseract_cmd = 'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
@@ -268,4 +269,5 @@ if __name__ == "__main__":
     doQuiz()
     register(saleOption2)
     doQuiz()
+    winsound.MessageBeep(1)
     
