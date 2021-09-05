@@ -2,6 +2,7 @@
 coinlist 自动登录器
 
 https://git-scm.com/download/win
+
 安装python和tesseract
 
 https://www.python.org/ftp/python/3.9.7/python-3.9.7-amd64.exe
