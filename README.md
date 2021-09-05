@@ -1,11 +1,7 @@
 # coinlistauto
 coinlist 自动登录器
 
-1. 截图Refresh图标定位浏览器位置
-2. OTP密钥保存在secret.json
-
 安装python和tesseract
-
 https://www.python.org/ftp/python/3.9.7/python-3.9.7-amd64.exe
 
 安装python时添加PATH勾上
