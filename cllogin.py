@@ -265,9 +265,9 @@ def doQuiz():
 
 if __name__ == "__main__":
     autoLogin()
-    register(saleOption1)
-    doQuiz()
-    register(saleOption2)
-    doQuiz()
+    #register(saleOption1)
+    #doQuiz()
+    #register(saleOption2)
+    #doQuiz()
     winsound.MessageBeep(1)
     
