@@ -10,6 +10,8 @@ import imagehash
 from fuzzy_match import match
 from fuzzy_match import algorithims
 
+#pytesseract.pytesseract.tesseract_cmd = 'C:\Program Files\Tesseract-OCR\tesseract.exe'
+
 #investName = "immutable-x"
 investName = "braintrust"
 
@@ -27,6 +29,7 @@ saleOption2 = 'coinlist.co/' + investName + '-option-2/new'
 continuewithPic = 'detectpic/continuewith.png'
 continuePic = 'detectpic/continue.png'
 japanPic = 'detectpic/japan.png'
+japan2Pic = 'detectpic/japan2.png'
 selectcountryPic = 'detectpic/selectcountry.png'
 manycountryPic = 'detectpic/manycountry.png'
 confirmresidencePic = 'detectpic/confirmresidence.png'
@@ -34,6 +37,7 @@ registration_completePic = 'detectpic/registration_complete.png'
 dashboardPic = 'detectpic/dashboard.png'
 loginpagePic = 'detectpic/loginpage.png'
 loginPic = 'detectpic/login.png'
+authcodePic = 'detectpic/authcode.png'
 
 q1 = 'detectpic/' + investName + 'quiz/q1.png'
 q2 = 'detectpic/' + investName + 'quiz/q2.png'
@@ -53,7 +57,7 @@ def locatePic(pic):
             info = "Find " + pic
             print(info)
             point = pyautogui.center(location)
-            pyautogui.moveTo(point.x/2, point.y/2)
+            pyautogui.moveTo(point.x, point.y)
             time.sleep(0.3)
             break
         else:
@@ -69,8 +73,10 @@ def autoLogin():
             print(location)
             print("Find fresh, goto coinlist")
             point = pyautogui.center(location)
-            #pyautogui.moveTo(point.x/2 *2, point.y/2)
-            pyautogui.click(point.x/2 *2, point.y/2)
+            print(point)
+            pyautogui.moveTo(point.x *2, point.y, 2)
+            pyautogui.click()
+            pyautogui.click()
             pyautogui.write('coinlist.co/login', interval=0.01)
             pyautogui.press('enter')
             pyautogui.press('enter')
@@ -126,58 +132,31 @@ def autoLogin():
     pyautogui.click()
     time.sleep(3)
 
-    # 输入auth code
-    while True:
-        find = 0
-        Img = ImageGrab.grab()
-        Img = Img.convert('L')
-        threshold = 200
-        table = []
-        for i in range(256):
-            if i < threshold:
-                table.append(1)
-            else:
-                table.append(0)
-        # 图片二值化
-        Img = Img.point(table, '1')
-        # 最后保存二值化图片
-        Img.save("auth.png")
-        d = pytesseract.image_to_data(Img, output_type=Output.DICT)
-        n_boxes = len(d['level'])
-        for i in range(n_boxes):
-            if "AUTH" in d['text'][i]:
-                find = 1
-                print(d['text'][i])
-                print("Find authentication")
-                (x, y, w, h) = (d['left'][i], d['top'][i], d['width'][i], d['height'][i])
-                pyautogui.moveTo(x/2 + w, y/2 + h/2 * 4)
-                pyautogui.click(x/2 + w, y/2 + h/2 * 4)
-                pyautogui.press("backspace")
-                pyautogui.press("backspace")
-                pyautogui.press("backspace")
-                pyautogui.press("backspace")
-                pyautogui.press("backspace")
-                pyautogui.press("backspace")
-                eamillist = {}
-                sorted_eamillist = {}
-                for i in secretjson:
-                    diff = algorithims.trigram(Email, i["Username"])
-                    eamillist[i["Username"]] = diff
-                sorted_eamillist = sorted(eamillist.items(), key=lambda x: x[1], reverse=True)
-                for i in secretjson:
-                    if i["Username"] == sorted_eamillist[0][0]:
-                        totp = pyotp.TOTP(i["Secret"])
-                        print(Email, i["Username"], totp.now())
-                        pyautogui.write(totp.now())
-                        break
-                pyautogui.click(x/2 + w, y/2 + h/2 * 10)   
-                break
-        if find == 1:
+    locatePic(authcodePic)
+    pyautogui.click()
+    pyautogui.press("backspace")
+    pyautogui.press("backspace")
+    pyautogui.press("backspace")
+    pyautogui.press("backspace")
+    pyautogui.press("backspace")
+    pyautogui.press("backspace")
+    eamillist = {}
+    sorted_eamillist = {}
+    for i in secretjson:
+        diff = algorithims.trigram(Email, i["Username"])
+        eamillist[i["Username"]] = diff
+    sorted_eamillist = sorted(eamillist.items(), key=lambda x: x[1], reverse=True)
+    for i in secretjson:
+        if i["Username"] == sorted_eamillist[0][0]:
+            totp = pyotp.TOTP(i["Secret"])
+            print(Email, i["Username"], totp.now())
+            pyautogui.write(totp.now())
             break
-        print("Not find authentication")
-        time.sleep(2)
     
+    locatePic(loginPic)
+    pyautogui.click()
     time.sleep(3)
+    
     locatePic(dashboardPic)
 
 
@@ -190,7 +169,7 @@ def register(saleOption):
             print("Find fresh, goto sale page")
             point = pyautogui.center(location)
             #pyautogui.moveTo(point.x/2 *2, point.y/2)
-            pyautogui.click(point.x/2 *2, point.y/2)
+            pyautogui.click(point.x *2, point.y)
             pyautogui.press('delete')
             pyautogui.write(saleOption, interval=0.01)
             pyautogui.press('enter')
@@ -209,7 +188,7 @@ def register(saleOption):
             print("Find continuewith xxx")
             point = pyautogui.center(location)
             #pyautogui.moveTo(point.x/2 *2, point.y/2)
-            pyautogui.click(point.x/2, point.y/2)
+            pyautogui.click(point.x, point.y)
             pyautogui.press('enter')
             time.sleep(0.2)
             break
@@ -234,7 +213,7 @@ def register(saleOption):
     pyautogui.click()
     # again check japan
     while True:
-        location = pyautogui.locateOnScreen(japanPic, confidence=0.9, grayscale=True)
+        location = pyautogui.locateOnScreen(japan2Pic, confidence=0.9, grayscale=True)
         if location:
             print("japan ok")
             break
@@ -251,7 +230,7 @@ def quiz(qx):
             info = "Find " + qx
             print(info)
             point = pyautogui.center(location)
-            pyautogui.moveTo(point.x/2, point.y/2)
+            pyautogui.moveTo(point.x, point.y)
             pyautogui.click()
             time.sleep(0.4)
             break
