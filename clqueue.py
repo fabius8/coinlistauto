@@ -78,7 +78,7 @@ def autoLogin():
             print(point)
             pyautogui.moveTo(point.x *2, point.y, 2)
             pyautogui.click()
-            pyautogui.click()
+            pyautogui.press('delete')
             pyautogui.write('coinlist.co/login', interval=0.01)
             pyautogui.press('enter')
             pyautogui.press('enter')
