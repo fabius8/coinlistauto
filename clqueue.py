@@ -13,8 +13,8 @@ import winsound
 
 #pytesseract.pytesseract.tesseract_cmd = 'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
-#investName = "immutable-x"
-investName = "braintrust"
+investName = "immutable-x"
+#investName = "braintrust"
 
 secretjson = json.load(open('secret.json'))
 Email = ""
@@ -289,5 +289,6 @@ if __name__ == "__main__":
     #doQuiz()
     #register(saleOption2)
     #doQuiz()
+    enterQueue()
     winsound.MessageBeep(1)
     
