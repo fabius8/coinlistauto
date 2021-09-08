@@ -27,7 +27,7 @@ imgDiff = 5
 freshPic = 'detectpic/fresh.png'
 saleOption1 = 'coinlist.co/' + investName + '-option-1/new'
 saleOption2 = 'coinlist.co/' + investName + '-option-2/new'
-queuelink = 'https://sales.coinlist.co/' + investName + '#sale-options'
+queuelink = 'https://sales.coinlist.co/' + investName
 continuewithPic = 'detectpic/continuewith.png'
 continuePic = 'detectpic/continue.png'
 japanPic = 'detectpic/japan.png'
@@ -179,6 +179,8 @@ def enterQueue(queuelink):
             print("Not find fresh icon")
             time.sleep(2)
     locatePic(freshPic)
+    pyautogui.press('pagedown')
+    pyautogui.press('pagedown')
     pyautogui.press('pagedown')
 
 
