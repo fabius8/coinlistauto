@@ -98,7 +98,7 @@ def autoLogin():
         pyautogui.click()
         Img = ImageGrab.grab()
         Img = Img.convert('L')
-
+""" 
         # 设定阈值
         threshold = 200
         table = []
@@ -108,7 +108,7 @@ def autoLogin():
             else:
                 table.append(0)
         # 图片二值化
-        Img = Img.point(table, '1')
+        Img = Img.point(table, '1') """
         # 最后保存二值化图片
         Img.save("Email.png")
 
