@@ -174,12 +174,12 @@ def enterQueue(queuelink):
             pyautogui.write(queuelink, interval=0.01)
             pyautogui.press('enter')
             pyautogui.press('enter')
-            time.sleep(3)
-            pyautogui.press('pagedown')
             break
         else:
             print("Not find fresh icon")
             time.sleep(2)
+    locatePic(freshPic)
+    pyautogui.press('pagedown')
 
 
 def register(saleOption):
