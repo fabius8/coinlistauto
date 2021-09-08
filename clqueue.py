@@ -289,6 +289,6 @@ if __name__ == "__main__":
     #doQuiz()
     #register(saleOption2)
     #doQuiz()
-    enterQueue()
+    enterQueue(queuelink)
     winsound.MessageBeep(1)
     
