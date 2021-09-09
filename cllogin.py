@@ -13,8 +13,8 @@ import winsound
 
 #pytesseract.pytesseract.tesseract_cmd = 'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
-#investName = "immutable-x"
-investName = "braintrust"
+investName = "immutable-x"
+#investName = "braintrust"
 
 secretjson = json.load(open('secret.json'))
 Email = ""
@@ -27,7 +27,7 @@ imgDiff = 5
 freshPic = 'detectpic/fresh.png'
 saleOption1 = 'coinlist.co/' + investName + '-option-1/new'
 saleOption2 = 'coinlist.co/' + investName + '-option-2/new'
-queuelink = 'https://sales.coinlist.co/' + investName + '#sale-options'
+queuelink = 'https://sales.coinlist.co/' + investName
 continuewithPic = 'detectpic/continuewith.png'
 continuePic = 'detectpic/continue.png'
 japanPic = 'detectpic/japan.png'
@@ -78,7 +78,7 @@ def autoLogin():
             print(point)
             pyautogui.moveTo(point.x *2, point.y, 2)
             pyautogui.click()
-            pyautogui.click()
+            pyautogui.press('delete')
             pyautogui.write('coinlist.co/login', interval=0.01)
             pyautogui.press('enter')
             pyautogui.press('enter')
@@ -163,12 +163,14 @@ def enterQueue(queuelink):
             pyautogui.write(queuelink, interval=0.01)
             pyautogui.press('enter')
             pyautogui.press('enter')
-            time.sleep(3)
-            pyautogui.press('pagedown')
             break
         else:
             print("Not find fresh icon")
             time.sleep(2)
+    locatePic(freshPic)
+    pyautogui.press('pagedown')
+    pyautogui.press('pagedown')
+    pyautogui.press('pagedown')
 
 
 def register(saleOption):
@@ -278,5 +280,6 @@ if __name__ == "__main__":
     #doQuiz()
     #register(saleOption2)
     #doQuiz()
+    #enterQueue(queuelink)
     winsound.MessageBeep(1)
     

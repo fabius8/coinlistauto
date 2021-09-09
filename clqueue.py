@@ -13,8 +13,8 @@ import winsound
 
 #pytesseract.pytesseract.tesseract_cmd = 'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
-investName = "immutable-x"
-#investName = "braintrust"
+#investName = "immutable-x"
+investName = "braintrust"
 
 secretjson = json.load(open('secret.json'))
 Email = ""
@@ -171,6 +171,8 @@ def enterQueue(queuelink):
     pyautogui.press('pagedown')
     pyautogui.press('pagedown')
     pyautogui.press('pagedown')
+    pyautogui.press('pagedown')
+    pyautogui.press('pagedown')
 
 
 def register(saleOption):
@@ -275,7 +277,7 @@ def doQuiz():
 
 
 if __name__ == "__main__":
-    autoLogin()
+    #autoLogin()
     #register(saleOption1)
     #doQuiz()
     #register(saleOption2)
