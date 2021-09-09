@@ -277,7 +277,7 @@ def doQuiz():
 
 
 if __name__ == "__main__":
-    #autoLogin()
+    autoLogin()
     #register(saleOption1)
     #doQuiz()
     #register(saleOption2)
