@@ -15,7 +15,7 @@ import winsound
 
 #investName = "immutable-x"
 #investName = "braintrust"
-investName = "gods-unchained"
+investName = "biconomy"
 
 
 secretjson = json.load(open('secret.json'))
