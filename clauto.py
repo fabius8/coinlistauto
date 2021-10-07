@@ -51,7 +51,7 @@ q6 = 'detectpic/' + investName + 'quiz/q6.png'
 q7 = 'detectpic/' + investName + 'quiz/q7.png'
 q8 = 'detectpic/' + investName + 'quiz/q8.png'
 q9 = 'detectpic/' + investName + 'quiz/q9.png'
-q10 = 'detectpic/' + investName + 'quiz/q10.png'
+#q10 = 'detectpic/' + investName + 'quiz/q10.png'
 
 
 def locatePic(pic):
@@ -247,7 +247,7 @@ def doQuiz():
     quiz(q7)
     quiz(q8)
     quiz(q9)
-    quiz(q10)
+    #quiz(q10)
     locatePic(continuePic)
     pyautogui.click()
     time.sleep(2)
