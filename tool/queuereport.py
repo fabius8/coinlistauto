@@ -41,11 +41,15 @@ def getQueue():
     return queuelist
 
 def sendMessage(server, ql):
-    r = requests.post(server, json={"number": cfg["number"],"queuelist": ql})
+    data = {"list": []}
+    for i in range(len(ql)):
+        number = str(cfg["number"]) + '-' + str(i+1)
+        data['list'].append({"number": number, "queue": ql[i]})
+    r = requests.post(server, json=data)
     print(r.json())
 
 if __name__ == "__main__":
     while True:
         ql = getQueue()
-        sendMessage(cfg["server"], ql)
+        sendMessage(cfg["server"], ["123","123"])
         time.sleep(10)
