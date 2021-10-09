@@ -52,5 +52,5 @@ def sendMessage(server, ql):
 if __name__ == "__main__":
     while True:
         ql = getQueue()
-        sendMessage(cfg["server"], ["123","123"])
+        sendMessage(cfg["server"], ql)
         time.sleep(10)
