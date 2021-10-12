@@ -4,3 +4,4 @@ pyotp
 pytesseract
 imagehash
 fuzzy_match
+requests
