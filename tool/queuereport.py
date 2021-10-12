@@ -39,7 +39,7 @@ def getQueue():
             queuelist.append(str(d['text'][i+1]))
     print(queuelist)
     if len(queuelist) == 0:
-        return {0}
+        return ["0"]
     return queuelist
 
 def sendMessage(server, ql):
