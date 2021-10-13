@@ -53,6 +53,10 @@ def sendMessage(server, ql):
 
 if __name__ == "__main__":
     while True:
-        ql = getQueue()
-        sendMessage(cfg["server"], ql)
+        try:
+            ql = getQueue()
+            sendMessage(cfg["server"], ql)
+        except Exception as err:
+            print(err)
+            pass
         time.sleep(10)
