@@ -14,7 +14,7 @@ import winsound
 #pytesseract.pytesseract.tesseract_cmd = 'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
 #investName = "immutable-x"
-investName = "biconomy"
+investName = "gods-unchained"
 
 secretjson = json.load(open('secret.json'))
 Email = ""
