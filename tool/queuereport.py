@@ -15,6 +15,9 @@ except:
 
 
 def getQueue():
+    if pyautogui.position().x == 0 and pyautogui.position().y == 0:
+        print("no screen")
+        return ["999999999"]
     Img = ImageGrab.grab()
     Img = Img.convert('L')
 
