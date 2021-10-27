@@ -15,7 +15,7 @@ import winsound
 
 #investName = "immutable-x"
 #investName = "braintrust"
-investName = "biconomy"
+investName = "guild-of-guardians"
 
 
 secretjson = json.load(open('secret.json'))
@@ -234,18 +234,19 @@ def quiz(qx):
 
 def doQuiz():
     time.sleep(3)
+    pyautogui.press("down")
     quiz(q1)
     quiz(q2)
+    quiz(q3)
     pyautogui.press("pagedown")
     time.sleep(1)
-    quiz(q3)
     quiz(q4)
     quiz(q5)
     quiz(q6)
-    pyautogui.press("pagedown")
-    time.sleep(1)
     quiz(q7)
     quiz(q8)
+    pyautogui.press("pagedown")
+    time.sleep(1)
     quiz(q9)
     #quiz(q10)
     locatePic(continuePic)
