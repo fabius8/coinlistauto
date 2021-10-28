@@ -234,8 +234,8 @@ def quiz(qx):
 
 def doQuiz():
     time.sleep(3)
-    quiz(q1)
     pyautogui.press("down")
+    quiz(q1)
     quiz(q2)
     quiz(q3)
     pyautogui.press("pagedown")
