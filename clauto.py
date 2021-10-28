@@ -218,7 +218,7 @@ def register(saleOption):
 
 def quiz(qx):
     while True:
-        location = pyautogui.locateOnScreen(qx, confidence=0.98, grayscale=True)
+        location = pyautogui.locateOnScreen(qx, confidence=0.99, grayscale=True)
         if location:
             info = "Find " + qx
             print(info)
@@ -234,7 +234,7 @@ def quiz(qx):
 
 def doQuiz():
     time.sleep(3)
-    pyautogui.scroll(-1)
+    pyautogui.scroll(-10)
     quiz(q1)
     quiz(q2)
     quiz(q3)
