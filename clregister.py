@@ -209,6 +209,7 @@ def doQuiz():
     locatePic(registration_completePic, 0.85)
 
 if __name__ == "__main__":
+    pyautogui.hotkey('alt', 'esc')
     autoLogin()
     register(saleOption1)
     doQuiz()
