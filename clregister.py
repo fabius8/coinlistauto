@@ -188,7 +188,7 @@ def quiz(qx, confidence):
 
 def doQuiz():
     time.sleep(3)
-    pyautogui.press("down")
+    #pyautogui.press("down")
     quiz(q1, 0.85)
     quiz(q2, 0.85)
     quiz(q3, 0.85)
