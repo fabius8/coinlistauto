@@ -99,12 +99,12 @@ def autoLogin():
         time.sleep(2)
 
     #点击登陆
-    locatePic(loginPic)
+    locatePic(loginPic, 0.9)
     pyautogui.click()
     time.sleep(3)
 
     #输入验证码
-    locatePic(authcodePic)
+    locatePic(authcodePic, 0.9)
     pyautogui.click()
     pyautogui.press("backspace")
     pyautogui.press("backspace")
@@ -125,7 +125,7 @@ def autoLogin():
             pyautogui.write(totp.now())
             break
     
-    locatePic(loginPic)
+    locatePic(loginPic, 0.9)
     pyautogui.click()
     time.sleep(3)
     locatePic(dashboardPic)
