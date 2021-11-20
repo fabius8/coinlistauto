@@ -11,7 +11,7 @@ from fuzzy_match import match
 from fuzzy_match import algorithims
 import winsound
 
-investName = "guild-of-guardians"
+investName = "umee"
 secretjson = json.load(open('secret.json'))
 Email = ""
 
@@ -202,7 +202,7 @@ def doQuiz():
     pyautogui.press("pagedown")
     time.sleep(1)
     quiz(q9, 0.85)
-    #quiz(q10)
+    #quiz(q10, 0.85)
     locatePic(continuePic, 0.85)
     pyautogui.click()
     time.sleep(2)
