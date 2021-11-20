@@ -1,5 +1,5 @@
 # coinlistauto
-coinlist 自动登录器
+coinlist 自动登录注册项目
 
 https://github.com/git-for-windows/git/releases/download/v2.33.0.windows.2/Git-2.33.0.2-64-bit.exe
 
@@ -19,7 +19,7 @@ https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w64-setup-v5.0.0-alpha.
 使用方法：
 1. OTP json文件准备好
 2. 打开chrome
-3. 运行clauto.py
+3. 运行clregister.py
 
 
 题外话：
