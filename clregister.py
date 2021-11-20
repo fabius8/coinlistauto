@@ -128,7 +128,7 @@ def autoLogin():
     locatePic(loginPic, 0.9)
     pyautogui.click()
     time.sleep(3)
-    locatePic(dashboardPic)
+    locatePic(dashboardPic, 0.9)
 
 def register(saleOption):
     point = locatePic(freshPic, 0.9)
