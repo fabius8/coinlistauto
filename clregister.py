@@ -15,7 +15,9 @@ investName = "umee"
 secretjson = json.load(open('secret.json'))
 Email = ""
 
+
 # 必要素材
+googleico = "detectpic/googleico.png"
 freshPic = 'detectpic/fresh.png'
 saleOption1 = 'coinlist.co/' + investName + '-option-1/new'
 saleOption2 = 'coinlist.co/' + investName + '-option-2/new'
@@ -209,10 +211,17 @@ def doQuiz():
     locatePic(registration_completePic, 0.85)
 
 if __name__ == "__main__":
-    pyautogui.hotkey('alt', 'esc')
-    autoLogin()
-    register(saleOption1)
-    doQuiz()
-    register(saleOption2)
-    doQuiz()
-    winsound.MessageBeep(1)
+    pyautogui.hotkey('win', 'm')
+    for pos in pyautogui.locateAllOnScreen(googleico):
+        point = pyautogui.center(pos)
+        pyautogui.moveTo(point.x, point.y)
+        pyautogui.doubleClick()
+        locatePic(freshPic, 0.8)
+        pyautogui.hotkey('win', 'up')
+        autoLogin()
+        register(saleOption1)
+        doQuiz()
+        register(saleOption2)
+        doQuiz()
+        winsound.MessageBeep(1)
+        pyautogui.hotkey('win', 'm')
