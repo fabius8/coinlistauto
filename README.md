@@ -11,7 +11,7 @@ https://www.python.org/ftp/python/3.9.7/python-3.9.7-amd64.exe
 
 https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w64-setup-v5.0.0-alpha.20210811.exe
 
-安装完后，`git clone https://github.com/fabius8/coinlistauto/`
+安装完后，`git clone https://github.com/fabius8/coinlistauto`
 点击`install.dat`
 
 使用方法：
