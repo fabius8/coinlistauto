@@ -11,11 +11,11 @@ https://www.python.org/ftp/python/3.9.7/python-3.9.7-amd64.exe
 
 https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w64-setup-v5.0.0-alpha.20210811.exe
 
-安装完，添加系统环境变量，安装py包。
+安装完后，`git clone https://github.com/fabius8/coinlistauto/`
 点击`install.dat`
 
 使用方法：
-1. OTP json文件准备好
+1. OTP 谷歌验证需要是 secret.json 文件格式
 2. 运行clregister.py
 
 
