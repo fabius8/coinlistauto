@@ -138,7 +138,7 @@ def autoLogin():
         eamillist[i["Username"]] = diff
     sorted_eamillist = sorted(eamillist.items(), key=lambda x: x[1], reverse=True)
     for i in secretjson:
-        if i["Username"] == sorted_eamillist[0][0]:
+        if i["Username"] == sorted_eamillist[0][0] and "CoinList" in i["Issuer"]:
             totp = pyotp.TOTP(i["Secret"])
             print(Email, i["Username"], totp.now())
             pyautogui.write(totp.now())
