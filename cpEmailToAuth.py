@@ -12,7 +12,8 @@ while True:
     string = pyperclip.paste()#读取剪切板内容
     if "@" in string:
         for i in secretjson:
-            if i["Username"] in string:
+            if i["Username"] in string and "HUOBI" in i["Issuer"]:
+                print(i["Issuer"])
                 totp = pyotp.TOTP(i["Secret"])
                 print(string, "[", i["Username"], totp.now(), "]")
                 pyperclip.copy(totp.now()) #重新写入剪切板
