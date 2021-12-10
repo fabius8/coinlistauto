@@ -144,9 +144,9 @@ def register(saleOption):
 
     time.sleep(3)
     locatePic(continuewithPic, 0.85)
-    if pyautogui.locateOnScreen(registration_completePic, confidence=0.9, grayscale=True):
-        return True
     pyautogui.click()
+    if pyautogui.locateOnScreen(registration_completePic, confidence=0.85, grayscale=True):
+        return True
     time.sleep(3)
     locatePic(selectcountryPic, 0.9)
     pyautogui.click()
