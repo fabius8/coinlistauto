@@ -224,6 +224,7 @@ if __name__ == "__main__":
         pyautogui.hotkey('win', 'up')
         autoLogin()
         if True == register(saleOption):
+            winsound.MessageBeep(1)
             pyautogui.hotkey('win', 'm')
             continue
         doQuiz()
