@@ -215,6 +215,7 @@ def doQuiz():
     locatePic(registration_completePic, 0.85)
 
 if __name__ == "__main__":
+    time.sleep(2)
     pyautogui.hotkey('win', 'm')
     for pos in pyautogui.locateAllOnScreen(googleico, confidence=0.9):
         point = pyautogui.center(pos)
