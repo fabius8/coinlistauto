@@ -217,7 +217,7 @@ def doQuiz():
 if __name__ == "__main__":
     time.sleep(2)
     pyautogui.hotkey('win', 'm')
-    for pos in pyautogui.locateAllOnScreen(googleico, confidence=0.9):
+    for pos in pyautogui.locateAllOnScreen(googleico, grayscale=True, confidence=0.85):
         point = pyautogui.center(pos)
         pyautogui.moveTo(point.x, point.y)
         pyautogui.doubleClick()
