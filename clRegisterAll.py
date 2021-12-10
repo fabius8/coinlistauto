@@ -11,7 +11,7 @@ from fuzzy_match import match
 from fuzzy_match import algorithims
 import winsound
 
-investName = "umee"
+investName = "pstake"
 secretjson = json.load(open('secret.json'))
 Email = ""
 
@@ -19,8 +19,9 @@ Email = ""
 # 必要素材
 googleico = "detectpic/googleico.png"
 freshPic = 'detectpic/fresh.png'
-saleOption1 = 'coinlist.co/' + investName + '-option-1/new'
-saleOption2 = 'coinlist.co/' + investName + '-option-2/new'
+#saleOption1 = 'coinlist.co/' + investName + '-option-1/new'
+#saleOption2 = 'coinlist.co/' + investName + '-option-2/new'
+saleOption = 'coinlist.co/' + investName + '-token-sale/new'
 continuewithPic = 'detectpic/continuewith.png'
 continuePic = 'detectpic/continue.png'
 japanPic = 'detectpic/japan.png'
@@ -121,7 +122,7 @@ def autoLogin():
         eamillist[i["Username"]] = diff
     sorted_eamillist = sorted(eamillist.items(), key=lambda x: x[1], reverse=True)
     for i in secretjson:
-        if i["Username"] == sorted_eamillist[0][0]:
+        if i["Username"] == sorted_eamillist[0][0] and "CoinList" in i["Issuer"]:
             totp = pyotp.TOTP(i["Secret"])
             print(Email, i["Username"], totp.now())
             pyautogui.write(totp.now())
@@ -143,6 +144,8 @@ def register(saleOption):
 
     time.sleep(3)
     locatePic(continuewithPic, 0.85)
+    if pyautogui.locateOnScreen(registration_completePic, confidence=0.9, grayscale=True):
+        return True
     pyautogui.click()
     time.sleep(3)
     locatePic(selectcountryPic, 0.9)
@@ -219,9 +222,11 @@ if __name__ == "__main__":
         locatePic(freshPic, 0.8)
         pyautogui.hotkey('win', 'up')
         autoLogin()
-        register(saleOption1)
+        if True == register(saleOption):
+            pyautogui.hotkey('win', 'm')
+            continue
         doQuiz()
-        register(saleOption2)
-        doQuiz()
+        #register(saleOption2)
+        #doQuiz()
         winsound.MessageBeep(1)
         pyautogui.hotkey('win', 'm')
