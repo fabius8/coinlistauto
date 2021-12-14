@@ -10,7 +10,7 @@ keyboard = Controller()
 
 signal.signal(signal.SIGINT, signal.SIG_DFL)
 
-serverIp = ""
+serverIp = "43.133.11.104"
 tcpUrl = "tcp://" + serverIp + ":5555"
 context = zmq.Context()
 socket = context.socket(zmq.SUB)
