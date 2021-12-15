@@ -1,20 +1,22 @@
 import signal
 import zmq
 import json
-import pyautogui
 from pynput import keyboard
 from pynput import mouse
-from pynput.keyboard import Key, Controller
+from pynput.mouse import Button
+from pynput.keyboard import Key
+import pyperclip
 
-keyboard = Controller()
+keyboard = keyboard.Controller()
+mouse = mouse.Controller()
 
 signal.signal(signal.SIGINT, signal.SIG_DFL)
 
-serverIp = "43.133.11.104"
-tcpUrl = "tcp://" + serverIp + ":5555"
+serveIp = ""
+tcpURL = 'tcp://' + serveIp + ':5555'
 context = zmq.Context()
 socket = context.socket(zmq.SUB)
-socket.connect(tcpUrl)
+socket.connect(tcpURL)
 socket.setsockopt(zmq.SUBSCRIBE, b'controller')
 
 while True:
@@ -22,17 +24,23 @@ while True:
     print(message)
     #print(f'{message}'[10:])
     action = json.loads(f'{message}'[10:])
-    print(type(action),action)
-    if action["type"]:
+    #print(type(action),action)
+    if action["type"] == "key":
         print("Press Key: ", action["key"])
         if len(action["key"]) == 1:
             keyboard.tap(action["key"])
+        elif action["key"] == "Key.f2":
+            pyperclip.copy(action["text"])
         else:
             keyboard.tap(getattr(Key, action["key"][4:]))
-    else:
-        pyautogui.moveTo(action["x"], action["y"])
-        pyautogui.click()
-        #mouse.move(action['x'], action['y'])
-        # Press and release
-        #mouse.press(Button.left)
-        #mouse.release(Button.left)
+
+    elif action["type"] == "mouse":
+        if action['button'] == "Button.left":
+            #print("left", action['x'], action['y'])
+            mouse.position = (action['x'], action['y']) 
+            mouse.click(Button.left)
+        else:
+            #print("right", action['x'], action['y'])
+            mouse.position = (action['x'], action['y']) 
+            mouse.click(Button.right)
+
