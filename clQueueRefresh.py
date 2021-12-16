@@ -28,9 +28,9 @@ if __name__ == "__main__":
         time.sleep(1)
     openQueueUrl(queueUrl_1)
 
-    while option2_Endtime > now:
-        diff = option2_Endtime - now
-        print(queueUrl_2, diff, end = '\r')
-        now = datetime.datetime.now().replace(microsecond=0)
-        time.sleep(1)
-    openQueueUrl(queueUrl_2)
+    # while option2_Endtime > now:
+    #     diff = option2_Endtime - now
+    #     print(queueUrl_2, diff, end = '\r')
+    #     now = datetime.datetime.now().replace(microsecond=0)
+    #     time.sleep(1)
+    # openQueueUrl(queueUrl_2)
