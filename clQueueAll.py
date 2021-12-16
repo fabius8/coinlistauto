@@ -239,6 +239,7 @@ if __name__ == "__main__":
         pyautogui.moveTo(point.x, point.y)
         pyautogui.doubleClick()
         locatePic(freshPic, 0.8)
+        time.sleep(2)
         pyautogui.hotkey('win', 'up')
         autoLogin()
         enterQueue(queuelink)
