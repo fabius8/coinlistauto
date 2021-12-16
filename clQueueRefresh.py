@@ -4,7 +4,7 @@ import time
 
 freshPic = 'detectpic/fresh.png'
 queueUrl_1 = 'https://coinlist.co/queue/enter_queue/pstake1'
-option1_Endtime = datetime.datetime(2021, 12, 17, 2, 0, 0).replace(microsecond=0)
+option1_Endtime = datetime.datetime(2021, 12, 17, 1, 30, 0).replace(microsecond=0)
 
 queueUrl_2 = 'https://www.baidu.com'
 option2_Endtime = datetime.datetime(2022, 12, 5, 23, 55, 0).replace(microsecond=0)
