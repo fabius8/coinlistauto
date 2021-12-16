@@ -228,7 +228,7 @@ def enterQueue(queuelink):
         else:
             print("Not find fresh icon")
             time.sleep(2)
-    locatePic(freshPic)
+    locatePic(freshPic, 0.8)
 
 
 if __name__ == "__main__":
