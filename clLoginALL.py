@@ -14,7 +14,7 @@ import winsound
 investName = "umee"
 secretjson = json.load(open('secret.json'))
 Email = ""
-
+queuelink = "https://coinlist.co/queue/enter_queue/pstake1"
 
 # 必要素材
 googleico = "detectpic/googleico.png"
@@ -209,6 +209,27 @@ def doQuiz():
     pyautogui.click()
     time.sleep(2)
     locatePic(registration_completePic, 0.85)
+
+
+def enterQueue(queuelink):
+    while True:
+        location = pyautogui.locateOnScreen(freshPic, confidence=0.9, grayscale=True)
+        if location:
+            print(location)
+            print("Find fresh, goto sale page")
+            point = pyautogui.center(location)
+            #pyautogui.moveTo(point.x/2 *2, point.y/2)
+            pyautogui.click(point.x *2, point.y)
+            pyautogui.press('delete')
+            pyautogui.write(queuelink, interval=0.01)
+            pyautogui.press('enter')
+            pyautogui.press('enter')
+            break
+        else:
+            print("Not find fresh icon")
+            time.sleep(2)
+    locatePic(freshPic)
+
 
 if __name__ == "__main__":
     time.sleep(2)
