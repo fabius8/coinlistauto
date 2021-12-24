@@ -11,7 +11,7 @@ from fuzzy_match import match
 from fuzzy_match import algorithims
 import winsound
 
-investName = "pstake"
+investName = "agoric"
 secretjson = json.load(open('secret.json'))
 Email = ""
 
@@ -19,9 +19,9 @@ Email = ""
 # 必要素材
 googleico = "detectpic/googleico.png"
 freshPic = 'detectpic/fresh.png'
-#saleOption1 = 'coinlist.co/' + investName + '-option-1/new'
-#saleOption2 = 'coinlist.co/' + investName + '-option-2/new'
-saleOption = 'coinlist.co/' + investName + '-token-sale/new'
+saleOption1 = 'coinlist.co/' + investName + '-option-1/new'
+saleOption2 = 'coinlist.co/' + investName + '-option-2/new'
+
 continuewithPic = 'detectpic/continuewith.png'
 continuePic = 'detectpic/continue.png'
 japanPic = 'detectpic/japan.png'
@@ -204,9 +204,9 @@ def doQuiz():
     quiz(q5, 0.85)
     quiz(q6, 0.85)
     quiz(q7, 0.85)
+    quiz(q8, 0.85)
     pyautogui.press("pagedown")
     time.sleep(1)
-    quiz(q8, 0.85)
     quiz(q9, 0.85)
     #quiz(q10, 0.85)
     locatePic(continuePic, 0.85)
@@ -224,12 +224,15 @@ if __name__ == "__main__":
         locatePic(freshPic, 0.8)
         pyautogui.hotkey('win', 'up')
         autoLogin()
-        if True == register(saleOption):
+
+        if True == register(saleOption1):
             winsound.MessageBeep(1)
-            pyautogui.hotkey('win', 'm')
-            continue
-        doQuiz()
-        #register(saleOption2)
-        #doQuiz()
-        winsound.MessageBeep(1)
+        else:
+            doQuiz()
+
+        if True == register(saleOption2):
+            winsound.MessageBeep(1)
+        else:
+            doQuiz()
+      
         pyautogui.hotkey('win', 'm')
