@@ -201,7 +201,7 @@ def doQuiz():
     pyautogui.press("pagedown")
     time.sleep(1)
     quiz(q4, 0.85)
-    quiz(q5, 0.85)
+    quiz(q5, 0.95)
     quiz(q6, 0.85)
     quiz(q7, 0.85)
     quiz(q8, 0.85)
