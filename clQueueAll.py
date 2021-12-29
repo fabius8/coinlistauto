@@ -14,7 +14,7 @@ import winsound
 investName = "umee"
 secretjson = json.load(open('secret.json'))
 Email = ""
-queuelink = "https://coinlist.co/queue/enter_queue/pstake1"
+queuelink = "https://sales.coinlist.co/queue/enter_queue/agoric1"
 
 # 必要素材
 googleico = "detectpic/googleico.png"
