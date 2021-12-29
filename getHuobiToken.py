@@ -8,9 +8,9 @@ secretjson = json.load(open('secret.json'))
 last_string = pyperclip.paste()
 while True:
     # 检测频率
-    time.sleep(3)
+    time.sleep(1)
     string = pyperclip.paste()#读取剪切板内容
-    time.sleep(2)
+    time.sleep(1)
     if "@" in string:
         for i in secretjson:
             if i["Username"] in string and "HUOBI" in i["Issuer"]:
