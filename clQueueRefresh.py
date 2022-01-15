@@ -7,7 +7,7 @@ queueUrl_1 = 'https://sales.coinlist.co/queue/enter_queue/agoric1'
 option1_Endtime = datetime.datetime(2021, 12, 30, 1, 30, 0).replace(microsecond=0)
 
 queueUrl_2 = 'https://sales.coinlist.co/queue/enter_queue/agoric2'
-option2_Endtime = datetime.datetime(2021, 12, 30, 6, 30, 0).replace(microsecond=0)
+option2_Endtime = datetime.datetime(2021, 12, 30, 6, 0, 0).replace(microsecond=0)
 
 def openQueueUrl(URL):
     print(URL)
