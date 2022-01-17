@@ -197,18 +197,18 @@ def doQuiz():
     #pyautogui.press("down")
     quiz(q1, 0.95)
     quiz(q2, 0.85)
-    
+    quiz(q3, 0.85)
     pyautogui.press("pagedown")
     time.sleep(1)
-    quiz(q3, 0.85)
+    
     quiz(q4, 0.85)
     quiz(q5, 0.95)
     quiz(q6, 0.85)
     quiz(q7, 0.85)
-    
+    quiz(q8, 0.85)
     pyautogui.press("pagedown")
     time.sleep(1)
-    quiz(q8, 0.85)
+    
     quiz(q9, 0.85)
     #quiz(q10, 0.85)
     locatePic(continuePic, 0.85)
