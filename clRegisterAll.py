@@ -11,7 +11,7 @@ from fuzzy_match import match
 from fuzzy_match import algorithims
 import winsound
 
-investName = "agoric"
+investName = "stader"
 secretjson = json.load(open('secret.json'))
 Email = ""
 
@@ -19,8 +19,8 @@ Email = ""
 # 必要素材
 googleico = "detectpic/googleico.png"
 freshPic = 'detectpic/fresh.png'
-saleOption1 = 'coinlist.co/' + investName + '-option-1/new'
-saleOption2 = 'coinlist.co/' + investName + '-option-2/new'
+saleOption1 = 'sales.coinlist.co/' + investName + '-option-1/new'
+saleOption2 = 'sales.coinlist.co/' + investName + '-option-2/new'
 
 continuewithPic = 'detectpic/continuewith.png'
 continuePic = 'detectpic/continue.png'
