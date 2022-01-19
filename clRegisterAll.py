@@ -143,7 +143,7 @@ def register(saleOption):
     pyautogui.press('enter')
 
     time.sleep(3)
-    locatePic(continuewithPic, 0.85)
+    locatePic(continuewithPic, 0.8)
     pyautogui.click()
     time.sleep(3)
     locatePic(freshPic, 0.9)
@@ -208,7 +208,7 @@ def doQuiz():
     quiz(q8, 0.85)
     pyautogui.press("pagedown")
     time.sleep(1)
-    
+
     quiz(q9, 0.85)
     #quiz(q10, 0.85)
     locatePic(continuePic, 0.85)
