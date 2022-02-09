@@ -21,7 +21,7 @@ def getQueue():
     Img = ImageGrab.grab()
     Img = Img.convert('L')
 
-    # 设定阈值
+"""     # 设定阈值
     threshold = 200
     table = []
     for i in range(256):
@@ -30,7 +30,7 @@ def getQueue():
         else:
             table.append(0)
     # 图片二值化
-    Img = Img.point(table, '1')
+    Img = Img.point(table, '1') """
     # 最后保存二值化图片
     Img.save("queue.png")
 
