@@ -11,10 +11,10 @@ from fuzzy_match import match
 from fuzzy_match import algorithims
 import winsound
 
-investName = "nym1"
+investName = "galaxy1"
 secretjson = json.load(open('secret.json'))
 Email = ""
-queuelink = "https://sales.coinlist.co/queue/enter_queue/nym1"
+queuelink = "https://sales.coinlist.co/queue/enter_queue/galaxy1"
 
 # 必要素材
 googleico = "detectpic/googleico.png"
