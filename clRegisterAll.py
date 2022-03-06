@@ -11,7 +11,7 @@ from fuzzy_match import match
 from fuzzy_match import algorithims
 import winsound
 
-investName = "galaxy"
+investName = "axelar"
 secretjson = json.load(open('secret.json'))
 Email = ""
 
