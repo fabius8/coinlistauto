@@ -3,11 +3,11 @@ import datetime
 import time
 
 freshPic = 'detectpic/fresh.png'
-queueUrl_1 = 'https://sales.coinlist.co/queue/enter_queue/galaxy1'
-option1_Endtime = datetime.datetime(2022, 2, 18, 1, 30, 0).replace(microsecond=0)
+queueUrl_1 = 'https://sales.coinlist.co/queue/enter_queue/axelar1'
+option1_Endtime = datetime.datetime(2022, 3, 10, 1, 30, 0).replace(microsecond=0)
 
 queueUrl_2 = 'https://sales.coinlist.co/queue/enter_queue/galaxy1'
-option2_Endtime = datetime.datetime(2022, 2, 18, 6, 30, 0).replace(microsecond=0)
+option2_Endtime = datetime.datetime(2023, 2, 18, 6, 30, 0).replace(microsecond=0)
 
 def openQueueUrl(URL):
     print(URL)
