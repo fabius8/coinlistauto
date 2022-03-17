@@ -18,6 +18,9 @@ context = zmq.Context()
 socket = context.socket(zmq.SUB)
 socket.connect(tcpURL)
 socket.setsockopt(zmq.SUBSCRIBE, b'controller')
+socket.setsockopt(zmq.TCP_KEEPALIVE, 1)
+socket.setsockopt(zmq.TCP_KEEPALIVE_IDLE, 120)
+socket.setsockopt(zmq.TCP_KEEPALIVE_INTVL, 1)
 
 print("Client start")
 while True:
