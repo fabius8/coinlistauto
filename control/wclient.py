@@ -22,7 +22,7 @@ socket.setsockopt(zmq.TCP_KEEPALIVE, 1)
 socket.setsockopt(zmq.TCP_KEEPALIVE_IDLE, 120)
 socket.setsockopt(zmq.TCP_KEEPALIVE_INTVL, 1)
 
-print("Client start")
+print("Client start ", serveIp)
 while True:
     message = socket.recv_string()
     print(message)
