@@ -29,7 +29,14 @@ while True:
     if action["type"] == "key":
         print("Press Key: ", action["key"])
         if len(action["key"]) == 1:
-            keyboard.tap(action["key"])
+            if action["key"] == "\u0016":
+                print("remote paste")
+                keyboard.press(Key.ctrl_l)
+                keyboard.press('v')
+                keyboard.release('v')
+                keyboard.release(Key.ctrl_l)
+            else:
+                keyboard.tap(action["key"])
         elif action["key"] == "Key.f2":
             pyperclip.copy(action["text"])
         else:
