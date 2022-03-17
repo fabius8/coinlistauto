@@ -19,6 +19,7 @@ socket = context.socket(zmq.SUB)
 socket.connect(tcpURL)
 socket.setsockopt(zmq.SUBSCRIBE, b'controller')
 
+print("Client start")
 while True:
     message = socket.recv_string()
     print(message)
@@ -43,4 +44,3 @@ while True:
             #print("right", action['x'], action['y'])
             mouse.position = (action['x'], action['y']) 
             mouse.click(Button.right)
-

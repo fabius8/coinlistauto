@@ -28,6 +28,7 @@ KEYLIST = [
 
 signal.signal(signal.SIGINT, signal.SIG_DFL)
 
+print("Server start")
 context = zmq.Context()
 socket = context.socket(zmq.PUB)
 socket.bind('tcp://*:5555')
