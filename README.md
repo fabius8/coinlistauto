@@ -9,7 +9,7 @@ https://www.python.org/ftp/python/3.9.7/python-3.9.7-amd64.exe
 
 安装python时添加PATH勾上
 
-https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w64-setup-v5.0.0-alpha.20210811.exe
+https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w64-setup-v5.0.1.20220118.exe
 
 安装完后，`git clone https://github.com/fabius8/coinlistauto`
 点击`install.dat`
