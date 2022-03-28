@@ -12,19 +12,27 @@ mouse = mouse.Controller()
 
 signal.signal(signal.SIGINT, signal.SIG_DFL)
 
-serveIp = "10.0.8.8"
+serveIp = "43.134.241.210"
 tcpURL = 'tcp://' + serveIp + ':5555'
 context = zmq.Context()
 socket = context.socket(zmq.SUB)
 socket.connect(tcpURL)
 socket.setsockopt(zmq.SUBSCRIBE, b'controller')
 socket.setsockopt(zmq.TCP_KEEPALIVE, 1)
-socket.setsockopt(zmq.TCP_KEEPALIVE_IDLE, 120)
-socket.setsockopt(zmq.TCP_KEEPALIVE_INTVL, 1)
+
+socket.setsockopt(zmq.RCVTIMEO, 600000)
+socket.HEARTBEAT_IVL = 5000
+socket.HEARTBEAT_TIMEOUT = 50000
 
 print("Client start ", serveIp)
 while True:
-    message = socket.recv_string()
+    try:
+        print("recv....")
+        message = socket.recv_string()
+    except Exception as e:
+        print(e, "reconnect...")
+        socket.connect(tcpURL)
+        continue
     print(message)
     #print(f'{message}'[10:])
     action = json.loads(f'{message}'[10:])

@@ -32,9 +32,6 @@ print("Server start")
 context = zmq.Context()
 socket = context.socket(zmq.PUB)
 socket.bind('tcp://*:5555')
-socket.setsockopt(zmq.TCP_KEEPALIVE, 1)
-socket.setsockopt(zmq.TCP_KEEPALIVE_IDLE, 120)
-socket.setsockopt(zmq.TCP_KEEPALIVE_INTVL, 1)
 
 def on_press(key):
     try:
