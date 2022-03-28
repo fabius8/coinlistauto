@@ -16,13 +16,13 @@ serveIp = "43.134.241.210"
 tcpURL = 'tcp://' + serveIp + ':5555'
 context = zmq.Context()
 socket = context.socket(zmq.SUB)
-socket.connect(tcpURL)
 socket.setsockopt(zmq.SUBSCRIBE, b'controller')
 socket.setsockopt(zmq.TCP_KEEPALIVE, 1)
 
 socket.setsockopt(zmq.RCVTIMEO, 600000)
 socket.HEARTBEAT_IVL = 5000
 socket.HEARTBEAT_TIMEOUT = 50000
+socket.connect(tcpURL)
 
 print("Client start ", serveIp)
 while True:
