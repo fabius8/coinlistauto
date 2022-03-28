@@ -12,7 +12,7 @@ mouse = mouse.Controller()
 
 signal.signal(signal.SIGINT, signal.SIG_DFL)
 
-serveIp = "43.134.241.210"
+serveIp = "10.0.8.8"
 tcpURL = 'tcp://' + serveIp + ':5555'
 context = zmq.Context()
 socket = context.socket(zmq.SUB)
